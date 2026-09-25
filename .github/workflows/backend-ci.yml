@@ -42,3 +42,4 @@ jobs:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: npm test
+        # CI retry after lockfile verification
