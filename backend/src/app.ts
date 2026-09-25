@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { db } from './prisma/db';
+import helmet from 'helmet';
 import authRoutes from './routes/auth.routes';
 import { authMiddleware, AuthRequest } from './middleware/authMiddleware';
 import swaggerUi from 'swagger-ui-express';
@@ -16,7 +17,7 @@ import { generalLimiter } from './middleware/rateLimiter';
 
 
 const app = express();
-import helmet from 'helmet';
+
 app.use(helmet());
 app.use(generalLimiter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use('/api/mood', moodHistoryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/songs', songsRoutes);
-app.use(errorHandler);
+
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' });
 });
@@ -43,6 +44,6 @@ app.get('/test-db', async (req, res) => {
 app.get('/api/me', authMiddleware, async (req: AuthRequest, res) => {
   res.json({ status: 'ok', userId: req.userId });
 });
-
+app.use(errorHandler);
 
 export default app;
