@@ -1,0 +1,20 @@
+model User {
+  id            String        @id @default(uuid())
+  name          String
+  email         String        @unique
+  password      String
+  moodHistories MoodHistory[]
+  createdAt     TimestamptzString @default(now())
+}
+
+model MoodHistory {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id])
+  mood             String
+  energy           String
+  genre            String
+  language         String
+  recommendedSongs String[]
+  createdAt        TimestamptzString @default(now())
+}
