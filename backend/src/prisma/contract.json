@@ -4,11 +4,11 @@
   "target": "postgres",
   "profileHash": "3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2",
   "roots": {
-    "moodHistory": {
+    "MoodHistory": {
       "model": "MoodHistory",
       "namespace": "public"
     },
-    "user": {
+    "User": {
       "model": "User",
       "namespace": "public"
     }
@@ -123,7 +123,7 @@
                 }
               },
               "namespaceId": "public",
-              "table": "moodHistory"
+              "table": "MoodHistory"
             }
           },
           "User": {
@@ -200,7 +200,7 @@
                 }
               },
               "namespaceId": "public",
-              "table": "user"
+              "table": "User"
             }
           }
         }
@@ -212,12 +212,12 @@
       "public": {
         "entries": {
           "table": {
-            "moodHistory": {
+            "MoodHistory": {
               "checks": [
                 {
                   "expression": "array_position(\"recommendedSongs\", NULL) IS NULL",
-                  "name": "moodHistory_recommendedSongs_elem_not_null_a8c60bfc",
-                  "prefix": "moodHistory_recommendedSongs_elem_not_null"
+                  "name": "MoodHistory_recommendedSongs_elem_not_null_a8c60bfc",
+                  "prefix": "MoodHistory_recommendedSongs_elem_not_null"
                 }
               ],
               "columns": {
@@ -274,14 +274,14 @@
                       "userId"
                     ],
                     "namespaceId": "public",
-                    "tableName": "moodHistory"
+                    "tableName": "MoodHistory"
                   },
                   "target": {
                     "columns": [
                       "id"
                     ],
                     "namespaceId": "public",
-                    "tableName": "user"
+                    "tableName": "User"
                   }
                 }
               ],
@@ -290,8 +290,8 @@
                   "columns": [
                     "userId"
                   ],
-                  "name": "moodHistory_userId_idx_a489d58a",
-                  "prefix": "moodHistory_userId_idx",
+                  "name": "MoodHistory_userId_idx_a489d58a",
+                  "prefix": "MoodHistory_userId_idx",
                   "unique": false
                 }
               ],
@@ -302,7 +302,7 @@
               },
               "uniques": []
             },
-            "user": {
+            "User": {
               "columns": {
                 "createdAt": {
                   "codecId": "pg/timestamptz-string@1",
@@ -355,10 +355,10 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "4ed23b203d2f02d19cb1073c1c49890e89763e789e1ac00ee02651f161248089"
+    "storageHash": "94cf468631d357bc7342c21cd389e2658959d83a8eaadaaedcff015157bc7ee4"
   },
   "execution": {
-    "executionHash": "0437abd3135ae5b0f26b029a88a14c7a6e43923e779bba0957a5e64fe005d413",
+    "executionHash": "081f5c934371c51c5189b720b9256b09978d4d54bd5fd2da70fd3c3e2b7b9cc9",
     "mutations": {
       "defaults": [
         {
@@ -369,7 +369,7 @@
           "ref": {
             "column": "id",
             "namespace": "public",
-            "table": "moodHistory"
+            "table": "MoodHistory"
           }
         },
         {
@@ -380,7 +380,7 @@
           "ref": {
             "column": "id",
             "namespace": "public",
-            "table": "user"
+            "table": "User"
           }
         }
       ]
@@ -399,6 +399,8 @@
       "checkConstraint": true,
       "defaultInInsert": true,
       "enums": true,
+      "insertOnConflictSkip": true,
+      "insertOnConflictWithoutTarget": true,
       "lateral": true,
       "returning": true,
       "scalarList": true
