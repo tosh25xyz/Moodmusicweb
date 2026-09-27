@@ -32,13 +32,10 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/test-db', async (req, res) => {
-  console.log('test-db route hit');
   try {
     const users = await db.orm.public.User.all();
-    console.log('test-db query succeeded', users.length);
     res.json({ status: 'ok', users });
   } catch (err) {
-    console.error('test-db query failed:', err);
     res.status(500).json({ status: 'error', message: (err as Error).message });
   }
 });
