@@ -1,3 +1,5 @@
+// use prisma-8
+
 model User {
   id            String        @id @default(uuid())
   name          String
@@ -5,6 +7,8 @@ model User {
   password      String
   moodHistories MoodHistory[]
   createdAt     TimestamptzString @default(now())
+
+  @@map("user")
 }
 
 model MoodHistory {
@@ -17,4 +21,6 @@ model MoodHistory {
   language         String
   recommendedSongs String[]
   createdAt        TimestamptzString @default(now())
+
+  @@map("moodHistory")
 }
