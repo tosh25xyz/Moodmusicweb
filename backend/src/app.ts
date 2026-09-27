@@ -17,7 +17,7 @@ import { generalLimiter } from './middleware/rateLimiter';
 
 
 const app = express();
-
+app.set('trust proxy', 1);
 app.use(helmet());
 app.use(generalLimiter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
