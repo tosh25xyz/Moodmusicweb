@@ -5,14 +5,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "postinstall": "prisma skills sync || exit 0",
-    "contract:emit": "prisma contract emit",
-    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
-    "lint": "eslint src --ext .ts"
-  },
+  "dev": "tsx watch src/server.ts",
+  "start": "tsx src/server.ts",
+  "build": "tsc",
+  "postinstall": "prisma skills sync || exit 0",
+  "contract:emit": "prisma contract emit",
+  "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
+  "lint": "eslint src --ext .ts"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
