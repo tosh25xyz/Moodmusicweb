@@ -34,9 +34,9 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'94cf468631d357bc7342c21cd389e2658959d83a8eaadaaedcff015157bc7ee4'>;
+  StorageHashBase<'4ed23b203d2f02d19cb1073c1c49890e89763e789e1ac00ee02651f161248089'>;
 export type ExecutionHash =
-  ExecutionHashBase<'081f5c934371c51c5189b720b9256b09978d4d54bd5fd2da70fd3c3e2b7b9cc9'>;
+  ExecutionHashBase<'0437abd3135ae5b0f26b029a88a14c7a6e43923e779bba0957a5e64fe005d413'>;
 export type ProfileHash =
   ProfileHashBase<'3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2'>;
 
@@ -292,7 +292,7 @@ export type FieldInputTypes = {
 };
 export type StorageColumnTypes = {
   readonly public: {
-    readonly MoodHistory: {
+    readonly moodHistory: {
       readonly createdAt: CodecTypes['pg/timestamptz-string@1']['output'];
       readonly energy: CodecTypes['pg/text@1']['output'];
       readonly genre: CodecTypes['pg/text@1']['output'];
@@ -302,7 +302,7 @@ export type StorageColumnTypes = {
       readonly recommendedSongs: ReadonlyArray<CodecTypes['pg/text@1']['output']>;
       readonly userId: CodecTypes['pg/text@1']['output'];
     };
-    readonly User: {
+    readonly user: {
       readonly createdAt: CodecTypes['pg/timestamptz-string@1']['output'];
       readonly email: CodecTypes['pg/text@1']['output'];
       readonly id: CodecTypes['pg/text@1']['output'];
@@ -313,7 +313,7 @@ export type StorageColumnTypes = {
 };
 export type StorageColumnInputTypes = {
   readonly public: {
-    readonly MoodHistory: {
+    readonly moodHistory: {
       readonly createdAt: CodecTypes['pg/timestamptz-string@1']['input'];
       readonly energy: CodecTypes['pg/text@1']['input'];
       readonly genre: CodecTypes['pg/text@1']['input'];
@@ -323,7 +323,7 @@ export type StorageColumnInputTypes = {
       readonly recommendedSongs: ReadonlyArray<CodecTypes['pg/text@1']['input']>;
       readonly userId: CodecTypes['pg/text@1']['input'];
     };
-    readonly User: {
+    readonly user: {
       readonly createdAt: CodecTypes['pg/timestamptz-string@1']['input'];
       readonly email: CodecTypes['pg/text@1']['input'];
       readonly id: CodecTypes['pg/text@1']['input'];
@@ -382,7 +382,7 @@ type ContractBase = Omit<
         readonly kind: 'postgres-schema';
         readonly entries: {
           readonly table: {
-            readonly MoodHistory: {
+            readonly moodHistory: {
               columns: {
                 readonly createdAt: {
                   readonly nativeType: 'timestamptz';
@@ -430,8 +430,8 @@ type ContractBase = Omit<
               uniques: readonly [];
               indexes: readonly [
                 {
-                  readonly name: 'MoodHistory_userId_idx_a489d58a';
-                  readonly prefix: 'MoodHistory_userId_idx';
+                  readonly name: 'moodHistory_userId_idx_a489d58a';
+                  readonly prefix: 'moodHistory_userId_idx';
                   readonly columns: readonly ['userId'];
                   readonly unique: false;
                 },
@@ -440,18 +440,18 @@ type ContractBase = Omit<
                 {
                   readonly source: {
                     readonly namespaceId: 'public' & NamespaceId;
-                    readonly tableName: 'MoodHistory';
+                    readonly tableName: 'moodHistory';
                     readonly columns: readonly ['userId'];
                   };
                   readonly target: {
                     readonly namespaceId: 'public' & NamespaceId;
-                    readonly tableName: 'User';
+                    readonly tableName: 'user';
                     readonly columns: readonly ['id'];
                   };
                 },
               ];
             };
-            readonly User: {
+            readonly user: {
               columns: {
                 readonly createdAt: {
                   readonly nativeType: 'timestamptz';
@@ -496,11 +496,11 @@ type ContractBase = Omit<
   readonly target: 'postgres';
   readonly targetFamily: 'sql';
   readonly roots: {
-    readonly MoodHistory: {
+    readonly moodHistory: {
       readonly namespace: 'public' & NamespaceId;
       readonly model: 'MoodHistory';
     };
-    readonly User: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
+    readonly user: { readonly namespace: 'public' & NamespaceId; readonly model: 'User' };
   };
   readonly domain: {
     readonly namespaces: {
@@ -557,7 +557,7 @@ type ContractBase = Omit<
               };
             };
             readonly storage: {
-              readonly table: 'MoodHistory';
+              readonly table: 'moodHistory';
               readonly namespaceId: 'public';
               readonly fields: {
                 readonly createdAt: { readonly column: 'createdAt' };
@@ -611,7 +611,7 @@ type ContractBase = Omit<
               };
             };
             readonly storage: {
-              readonly table: 'User';
+              readonly table: 'user';
               readonly namespaceId: 'public';
               readonly fields: {
                 readonly createdAt: { readonly column: 'createdAt' };
@@ -656,7 +656,7 @@ type ContractBase = Omit<
           readonly ref: {
             readonly column: 'id';
             readonly namespace: 'public';
-            readonly table: 'MoodHistory';
+            readonly table: 'moodHistory';
           };
         },
         {
@@ -664,7 +664,7 @@ type ContractBase = Omit<
           readonly ref: {
             readonly column: 'id';
             readonly namespace: 'public';
-            readonly table: 'User';
+            readonly table: 'user';
           };
         },
       ];
